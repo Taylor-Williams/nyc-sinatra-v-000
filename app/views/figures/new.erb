@@ -9,7 +9,7 @@
   <% end %>
   <br>
   <p>does your figure have any of these landmarks?</p>
-  <%@landmark.each do |landmark|%>
+  <%@landmarks.each do |landmark|%>
   <input type="checkbox" name="figure[landmarks][]" value="<%=landmark.id%>"><%=landmark.name%>
   <% end %>
   <br>
