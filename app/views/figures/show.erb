@@ -1,0 +1,5 @@
+<h1><%=@figure.name%></h1>
+<h3>landmaks:</h3>
+<%@figure.landmarks.each do |landmark|%>
+<h3><a href="/landmarks/<%=landmark.id%>"><%=landmark.name%></a></h3>
+<% end %>
