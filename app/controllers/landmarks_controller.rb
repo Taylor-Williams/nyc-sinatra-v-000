@@ -1,7 +1,7 @@
 class LandmarksController < ApplicationController
-  
+
   get '/landmarks' do
-    @landmarks = landmark.all
+    @landmarks = Landmark.all
     erb :'landmarks/index'
   end
 
@@ -12,19 +12,19 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks/:id' do
-    @landmark = landmark.find(params[:id])
+    @landmark = Landmark.find(params[:id])
     erb :'landmarks/show'
   end
 
   get '/landmarks/:id/edit' do
-    @landmark = landmark.find(params[:id])
+    @landmark = Landmark.find(params[:id])
     @landmarks = Landmark.all
     @titles = Title.all
     erb :'landmarks/edit'
   end
 
   post '/landmarks' do
-    @landmark = landmark.create(name: params[:landmark][:name])
+    @landmark = Landmark.create(name: params[:landmark][:name])
     if params[:landmark][:landmark_ids]
       @landmark.landmark_ids = params[:landmark][:landmark_ids]
     end
@@ -49,7 +49,7 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks/:id' do
-    @landmark = landmark.find(params[:id])
+    @landmark = Landmark.find(params[:id])
     if !params[:landmark][:name].empty?
       @landmark.name = params[:landmark][:name]
     end
@@ -78,5 +78,5 @@ class LandmarksController < ApplicationController
     @landmark.save
     redirect :"landmarks/#{@landmark.id}"
   end
-  
+
 end
