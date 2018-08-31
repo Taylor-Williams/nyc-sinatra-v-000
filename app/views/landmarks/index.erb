@@ -1,6 +1,11 @@
 <h2>All Historical Landmarks</h2>
 
-<!-- add content here -->
+<h1>Welcome to the Landmarks list!</h1>
+<h3>we will show all the landmarks in our database, clicking their name will send you to their page</h3>
+<%@landmarks.each do |landmark|%>
+  <p><a href="/landmarks/<%=landmark.id%>"><%=landmark.name%></a></p>
+<% end %>
+
 
 <a class="button" href="/figures">Figures</a>
 <a class="button" href="/">Home</a>
