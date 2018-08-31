@@ -29,16 +29,16 @@ class FiguresController < ApplicationController
     if !params[:figure][:titles][:new].empty?
       @figure.titles << Title.find_or_create_by(name: params[:figure][:titles][:new])
     end
-    if !params[:figure][:genres].empty?
-      params[:figure][:genres][:ids] = [] if !params[:figure][:genres][:ids]
-      if !params[:figure][:genres][:names].empty?
-        params[:figure][:genres][:names].split(",").map!(&:strip).each do |name|
-          genre = Genre.create(name: name)
-          params[:figure][:genres][:ids] << genre.id
+    if !params[:figure][:landmarks].empty?
+      params[:figure][:landmarks][:ids] = [] if !params[:figure][:landmarks][:ids]
+      if !params[:figure][:landmarks][:names].empty?
+        params[:figure][:landmarks][:names].split(",").map!(&:strip).each do |name|
+          landmark = Landmark.create(name: name)
+          params[:figure][:landmarks][:ids] << landmark.id
         end
       end
-      params[:figure][:genres][:ids].each do |genre_id|
-        @figure.figure_genres.create(genre_id: genre_id)
+      params[:figure][:landmarks][:ids].each do |landmark_id|
+        @figure.figure_landmarks.create(landmark_id: landmark_id)
       end
     end
     @figure.save
