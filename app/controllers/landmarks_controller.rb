@@ -32,17 +32,12 @@ class LandmarksController < ApplicationController
       figure = Figure.find_or_create_by(name: params[:figure][:name])
       @landmark.figures << figure
     end
-    if !params[:title].empty?
-      params[:landmark][:title_ids] = [] if !params[:landmark][:title_ids]
-      if !params[:title][:name].empty?
-        params[:title][:name].split(",").map!(&:strip).each do |name|
-          title = Title.find_or_create_by(name: name)
-          params[:landmark][:title_ids] << title.id
-        end
-      end
-      params[:landmark][:title_ids].each do |title_id|
-        @landmark.landmark_titles.create(title_id: title_id)
-      end
+    if params[:landmark][:title_ids]
+      @landmark.title_ids = params[:landmark][:title_ids]
+    end
+    if !params[:title][:name].empty?
+      title = Title.find_or_create_by(name: params[:title][:name])
+      @landmark.title << title
     end
     @landmark.save
     redirect :"landmarks/#{@landmark.id}"
@@ -60,20 +55,12 @@ class LandmarksController < ApplicationController
       figure = Figure.find_or_create_by(name: params[:figure][:name])
       @landmark.figures << figure
     end
-    if !params[:title].empty?
-      params[:landmark][:title_ids] = [] if !params[:landmark][:title_ids]
-      if !params[:title][:name].empty?
-        params[:title][:name].split(",").map!(&:strip).each do |name|
-          title = Title.find_or_create_by(name: name)
-          params[:landmark][:title_ids] << title.id
-        end
-      end
-      (@landmark.title_ids - params[:landmark][:title_ids]).each do |title_id|
-        @landmark.landmark_titles.find_by(title_id: title_id).destroy
-      end
-      (params[:landmark][:title_ids] - landmarke.title_ids).each do |title_id|
-        @landmark.landmark_titles.create(title_id: title_id)
-      end
+    if params[:landmark][:title_ids]
+      @landmark.title_ids = params[:landmark][:title_ids]
+    end
+    if !params[:title][:name].empty?
+      title = Title.find_or_create_by(name: params[:title][:name])
+      @landmark.title << title
     end
     @landmark.save
     redirect :"landmarks/#{@landmark.id}"
