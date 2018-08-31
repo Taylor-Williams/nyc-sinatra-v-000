@@ -32,8 +32,8 @@ class FiguresController < ApplicationController
     end
     if !params[:figure][:landmarks].empty?
       params[:figure][:landmarks][:ids] = [] if !params[:figure][:landmarks][:ids]
-      if !params[:figure][:landmarks][:names].empty?
-        params[:figure][:landmarks][:names].split(",").map!(&:strip).each do |name|
+      if !params[:figure][:landmarks][:new].empty?
+        params[:figure][:landmarks][:new].split(",").map!(&:strip).each do |name|
           landmark = Landmark.create(name: name)
           params[:figure][:landmarks][:ids] << landmark.id
         end
