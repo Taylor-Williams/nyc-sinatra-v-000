@@ -25,6 +25,9 @@ class LandmarksController < ApplicationController
 
   post '/landmarks' do
     @landmark = Landmark.create(name: params[:landmark][:name])
+    if !params[:landmark][:year_completed].empty?
+      @landmark.year_completed = params[:landmark][:year_completed]
+    end
     if params[:landmark][:landmark_ids]
       @landmark.figure_ids = params[:landmark][:figure_ids]
     end
@@ -47,6 +50,9 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     if !params[:landmark][:name].empty?
       @landmark.name = params[:landmark][:name]
+    end
+    if !params[:landmark][:year_completed].empty?
+      @landmark.year_completed = params[:landmark][:year_completed]
     end
     if params[:landmark][:figure_ids]
       @landmark.figure_ids = params[:landmark][:figure_ids]
