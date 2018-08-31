@@ -10,7 +10,7 @@
   <br>
   <p>does your figure have any of these landmarks?</p>
   <%@landmarks.each do |landmark|%>
-  <input type="checkbox" name="figure[landmarks][ids][]" value="<%=landmark.id%>"><%=landmark.name%>
+  <input type="checkbox" name="figure[landmarks][ids][]" value="<%=landmark.id%>" <%="checked" if @figure.title_ids.include?(title.id)%>><%=landmark.name%>
   <% end %>
   <br>
   <label for="figure_landmark">Create a new landmark for your Figure:</label>
