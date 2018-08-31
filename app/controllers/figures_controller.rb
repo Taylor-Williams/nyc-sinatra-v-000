@@ -49,7 +49,7 @@ class FiguresController < ApplicationController
   end
 
   post '/figures/:id/edit' do
-    @figure = Figure.create(name: params[:figure][:name])
+    @figure = Figure.find(params[:id])
     if params[:figure][:landmark_ids]
       @figure.landmark_ids = params[:figure][:landmark_ids]
     end
