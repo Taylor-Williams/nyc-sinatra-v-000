@@ -9,7 +9,7 @@
   <br>
   <p>does your Landmark have any of these titles?</p>
   <%@titles.each do |title|%>
-  <input type="checkbox" name="landmark[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>" <%="checked" if @figure.title_id == title.id)%>><%=title.name%>
+  <input type="checkbox" name="landmark[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>" <%="checked" if @figure.title_id == title.id%>><%=title.name%>
   <% end %>
   <br>
   <p>does your Landmark have any of these figures?</p>
