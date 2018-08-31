@@ -40,7 +40,7 @@ class FiguresController < ApplicationController
           params[:figure][:title_ids] << title.id
         end
       end
-      params[:figure][:titles][:ids].each do |title_id|
+      params[:figure][:title_ids].each do |title_id|
         @figure.figure_titles.create(title_id: title_id)
       end
     end
