@@ -1,21 +1,23 @@
 <h2>Edit <%=@figure.name%>Figure!</h2>
 <form class="edit_figure" action="/figures/<%=@figure.id%>/edit" method="post">
   <label for="figure_name">Figure Name:</label>
-  <input type="text" name="figure[name]">
+  <input type="text" name="figure[name]" id="figure_name">
   <br>
   <p>does your figure have any of these titles?</p>
   <%@titles.each do |title|%>
-  <input type="checkbox" name="figure[titles][ids][]" value="<%=title.id%>" <%="checked" if @figure.title_ids.include?(title.id)%>><%=title.name%>
+  <input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>">><%=title.name%>
   <% end %>
   <br>
   <p>does your figure have any of these landmarks?</p>
   <%@landmarks.each do |landmark|%>
-  <input type="checkbox" name="figure[landmarks][ids][]" value="<%=landmark.id%>" <%="checked" if @figure.landmark_ids.include?(landmark.id)%>><%=landmark.name%>
+  <input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%=landmark.name%>
   <% end %>
   <br>
   <label for="figure_landmark">Create a new landmark for your Figure:</label>
-  <input type="text" name="figure[landmarks][new]">
+  <input type="text" name="landmark[name]" id="new_landmark">
   <label for="figure_title">Create a new title for your Figure (make multiple by comma separating them):</label>
-  <input type="text" name="figure[titles][new]">
-  <input type="submit" value="Submit">
+  <input type="text" name="title[name]" id="new_title">
+  <input type="submit" value="Create New Figure">
 </form>
+<%="checked" if @figure.title_ids.include?(title.id)%>
+<%="checked" if @figure.landmark_ids.include?(landmark.id)%>
