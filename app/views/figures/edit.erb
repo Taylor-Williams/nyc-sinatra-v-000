@@ -5,7 +5,7 @@
   <br>
   <p>does your figure have any of these titles?</p>
   <%@titles.each do |title|%>
-  <input type="checkbox" name="figure[titles][ids][]" value="<%=title.id%>"><%=title.name%>
+  <input type="checkbox" name="figure[titles][ids][]" value="<%=title.id%>" <%="checked" if @figure.title_ids.include?(title.id)%>><%=title.name%>
   <% end %>
   <br>
   <p>does your figure have any of these landmarks?</p>
