@@ -65,7 +65,7 @@ class FiguresController < ApplicationController
           params[:figure][:title_ids] << title.id
         end
       end
-      (@figure.genre_ids - params[:figure][:titles][:ids]).each do |title_id|
+      (@figure.title_ids - params[:figure][:title_ids]).each do |title_id|
         @figure.figure_titles.find_by(title_id: title_id).destroy
       end
       (params[:figure][:titles][:ids] - @figure.title_ids).each do |title_id|
