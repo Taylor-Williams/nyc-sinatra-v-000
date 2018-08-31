@@ -50,19 +50,19 @@ class FiguresController < ApplicationController
 
   post '/figures/:id/edit' do
     @figure = Figure.create(name: params[:figure][:name])
-    if params[:figure][:landmarks][:ids]
-      @figure.landmark_ids = params[:figure][:landmarks][:ids]
+    if params[:figure][:landmark_ids]
+      @figure.landmark_ids = params[:figure][:landmark_ids]
     end
-    if !params[:figure][:landmarks][:new].empty?
-      landmark = Landmark.find_or_create_by(name: params[:figure][:landmarks][:new])
+    if !params[:landmark][:name].empty?
+      landmark = Landmark.find_or_create_by(name: params[:landmark][:name])
       @figure.landmarks << landmark
     end
-    if !params[:figure][:titles].empty?
-      params[:figure][:titles][:ids] = [] if !params[:figure][:titles][:ids]
-      if !params[:figure][:titles][:new].empty?
-        params[:figure][:titles][:new].split(",").map!(&:strip).each do |name|
+    if !params[:title].empty?
+      params[:figure][:title_ids] = [] if !params[:figure][:title_ids]
+      if !params[:title][:name].empty?
+        params[:title][:name].split(",").map!(&:strip).each do |name|
           title = Title.find_or_create_by(name: name)
-          params[:figure][:titles][:ids] << title.id
+          params[:figure][:title_ids] << title.id
         end
       end
       (@figure.genre_ids - params[:figure][:titles][:ids]).each do |title_id|
