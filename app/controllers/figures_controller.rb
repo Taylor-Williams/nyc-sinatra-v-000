@@ -27,7 +27,8 @@ class FiguresController < ApplicationController
       @figure.title_ids = params[:figure][:titles][:ids]
     end
     if !params[:figure][:titles][:new].empty?
-      @figure.titles << Title.find_or_create_by(name: params[:figure][:titles][:new])
+      title = Title.find_or_create_by(name: params[:figure][:titles][:new])
+      @figure.title_ids << title.id
     end
     if !params[:figure][:landmarks].empty?
       params[:figure][:landmarks][:ids] = [] if !params[:figure][:landmarks][:ids]
