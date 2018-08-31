@@ -25,8 +25,8 @@ class FiguresController < ApplicationController
 
   post '/figures' do
     @figure = Figure.create(name: params[:figure][:name])
-    if params[:figure][:landmarks][:ids]
-      @figure.landmark_ids = params[:figure][:landmarks][:ids]
+    if params[:figure][:landmark_ids]
+      @figure.landmark_ids = params[:figure][:landmark_ids]
     end
     if !params[:figure][:landmarks][:new].empty?
       landmark = Landmark.find_or_create_by(name: params[:figure][:landmarks][:new])
