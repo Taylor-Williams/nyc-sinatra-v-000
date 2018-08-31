@@ -7,7 +7,7 @@ class LandmarksController < ApplicationController
 
   get '/landmarks/new' do
     @titles = Title.all
-    @landmarks = Landmark.all
+    @figures = figure.all
     erb :'landmarks/new'
   end
 
@@ -18,7 +18,7 @@ class LandmarksController < ApplicationController
 
   get '/landmarks/:id/edit' do
     @landmark = Landmark.find(params[:id])
-    @landmarks = Landmark.all
+    @figures = figure.all
     @titles = Title.all
     erb :'landmarks/edit'
   end
@@ -26,11 +26,11 @@ class LandmarksController < ApplicationController
   post '/landmarks' do
     @landmark = Landmark.create(name: params[:landmark][:name])
     if params[:landmark][:landmark_ids]
-      @landmark.landmark_ids = params[:landmark][:landmark_ids]
+      @landmark.figure_ids = params[:landmark][:figure_ids]
     end
-    if !params[:landmark][:name].empty?
-      landmark = Landmark.find_or_create_by(name: params[:landmark][:name])
-      @landmark.landmarks << landmark
+    if !params[:figure][:name].empty?
+      figure = figure.find_or_create_by(name: params[:figure][:name])
+      @landmark.figures << figure
     end
     if !params[:title].empty?
       params[:landmark][:title_ids] = [] if !params[:landmark][:title_ids]
@@ -53,12 +53,12 @@ class LandmarksController < ApplicationController
     if !params[:landmark][:name].empty?
       @landmark.name = params[:landmark][:name]
     end
-    if params[:landmark][:landmark_ids]
-      @landmark.landmark_ids = params[:landmark][:landmark_ids]
+    if params[:landmark][:figure_ids]
+      @landmark.figure_ids = params[:landmark][:figure_ids]
     end
-    if !params[:landmark][:name].empty?
-      landmark = Landmark.find_or_create_by(name: params[:landmark][:name])
-      @landmark.landmarks << landmark
+    if !params[:figure][:name].empty?
+      figure = figure.find_or_create_by(name: params[:figure][:name])
+      @landmark.figures << figure
     end
     if !params[:title].empty?
       params[:landmark][:title_ids] = [] if !params[:landmark][:title_ids]
