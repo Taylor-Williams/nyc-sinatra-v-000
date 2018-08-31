@@ -48,7 +48,7 @@ class FiguresController < ApplicationController
     redirect :"figures/#{@figure.id}"
   end
 
-  post '/figures/:id/edit' do
+  post '/figures/:id' do
     @figure = Figure.find(params[:id])
     if !params[:figure_name].empty?
       @figure.name = params[:figure_name]
