@@ -20,7 +20,6 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     @figures = Figure.all
     @titles = Title.all
-    binding.pry
     erb :'landmarks/edit'
   end
 
