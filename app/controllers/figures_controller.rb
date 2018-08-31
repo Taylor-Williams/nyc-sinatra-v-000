@@ -23,12 +23,12 @@ class FiguresController < ApplicationController
   post '/figures' do
     binding.pry
     @figure = Figure.create(name: params[:figure][:name])
-    if params[:figure][:titles][:ids]
-      @figure.title_ids = params[:figure][:titles][:ids]
+    if params[:figure][:landmarks][:ids]
+      @figure.landmark_ids = params[:figure][:landmarks][:ids]
     end
-    if !params[:figure][:titles][:new].empty?
-      title = Title.find_or_create_by(name: params[:figure][:titles][:new])
-      @figure.title_ids << title.id
+    if !params[:figure][:landmarks][:new].empty?
+      landmark = Landmark.find_or_create_by(name: params[:figure][:landmarks][:new])
+      @figure.landmarks << landmark
     end
     if !params[:figure][:landmarks].empty?
       params[:figure][:landmarks][:ids] = [] if !params[:figure][:landmarks][:ids]
