@@ -1,15 +1,15 @@
 <h2>Create New Landmark</h2>
 
 <form class="create_landmark" action="/landmarks" method="post">
-  <label for="landmark_name">landmark Name:</label>
+  <label for="landmark_name">Landmark Name:</label>
   <input type="text" name="landmark[name]" id="landmark_name">
   <br>
-  <p>does your landmark have any of these titles?</p>
+  <p>does your Landmark have any of these titles?</p>
   <%@titles.each do |title|%>
   <input type="checkbox" name="landmark[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>">><%=title.name%>
   <% end %>
   <br>
-  <p>does your landmark have any of these landmarks?</p>
+  <p>does your Landmark have any of these landmarks?</p>
   <%@landmarks.each do |landmark|%>
   <input type="checkbox" name="landmark[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%=landmark.name%>
   <% end %>
