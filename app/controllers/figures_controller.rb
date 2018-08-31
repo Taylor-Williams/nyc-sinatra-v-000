@@ -50,6 +50,9 @@ class FiguresController < ApplicationController
 
   post '/figures/:id/edit' do
     @figure = Figure.find(params[:id])
+    if !params[:figure_name].empty?
+      @figure.name = params[:figure_name]
+    end
     if params[:figure][:landmark_ids]
       @figure.landmark_ids = params[:figure][:landmark_ids]
     end
