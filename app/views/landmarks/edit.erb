@@ -14,7 +14,7 @@
   <br>
   <p>does your Landmark have any of these figures?</p>
   <%@figures.each do |figure|%>
-  <input type="checkbox" name="landmark[figure_ids][]" value="<%=figure.id%>" id="figure_<%=figure.id%>" <%="checked" if @landmark.figure_id == figure.id%>><%=figure.name%>
+  <input type="radio" name="landmark[figure_ids][]" value="<%=figure.id%>" id="figure_<%=figure.id%>" <%="checked" if @landmark.figure_id == figure.id%>><%=figure.name%>
   <% end %>
   <br>
   <label for="landmark_figure">Create a new figure for your Landmark:</label>
