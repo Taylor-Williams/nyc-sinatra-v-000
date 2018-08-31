@@ -9,13 +9,13 @@
   <input type="checkbox" name="landmark[title_ids][]" value="<%=title.id%>" id="title_<%=title.id%>">><%=title.name%>
   <% end %>
   <br>
-  <p>does your Landmark have any of these landmarks?</p>
-  <%@landmarks.each do |landmark|%>
-  <input type="checkbox" name="landmark[landmark_ids][]" value="<%=landmark.id%>" id="landmark_<%=landmark.id%>"><%=landmark.name%>
+  <p>does your Landmark have any of these figures?</p>
+  <%@figures.each do |figure|%>
+  <input type="checkbox" name="landmark[figure_ids][]" value="<%=figure.id%>" id="figure_<%=figure.id%>"><%=figure.name%>
   <% end %>
   <br>
-  <label for="landmark_landmark">Create a new landmark for your Landmark:</label>
-  <input type="text" name="landmark[name]" id="new_landmark">
+  <label for="landmark_figure">Create a new figure for your Landmark:</label>
+  <input type="text" name="figure[name]" id="new_figure">
   <label for="landmark_title">Create a new title for your Landmark (make multiple by comma separating them):</label>
   <input type="text" name="title[name]" id="new_title">
   <input type="submit" value="Create New Landmark">
