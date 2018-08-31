@@ -57,7 +57,7 @@ class LandmarksController < ApplicationController
       @landmark.figure_ids = params[:landmark][:figure_ids]
     end
     if !params[:figure][:name].empty?
-      figure = figure.find_or_create_by(name: params[:figure][:name])
+      figure = Figure.find_or_create_by(name: params[:figure][:name])
       @landmark.figures << figure
     end
     if !params[:title].empty?
