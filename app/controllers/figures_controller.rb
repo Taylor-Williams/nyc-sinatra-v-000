@@ -24,7 +24,7 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    @figure = Figure.create(name: params[:figure_name])
+    @figure = Figure.create(name: params[:figure][:name])
     if params[:figure][:landmarks][:ids]
       @figure.landmark_ids = params[:figure][:landmarks][:ids]
     end
