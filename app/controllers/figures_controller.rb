@@ -34,7 +34,7 @@ class FiguresController < ApplicationController
       params[:figure][:titles][:ids] = [] if !params[:figure][:titles][:ids]
       if !params[:figure][:titles][:new].empty?
         params[:figure][:titles][:new].split(",").map!(&:strip).each do |name|
-          title = title.find_or_create_by(name: name)
+          title = Title.find_or_create_by(name: name)
           params[:figure][:titles][:ids] << title.id
         end
       end
