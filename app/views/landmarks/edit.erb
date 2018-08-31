@@ -4,6 +4,8 @@
 <form class="edit_landmark" action="/landmarks/<%=@landmark.id%>" method="post">
   <label for="landmark_name">landmark Name:</label>
   <input type="text" name="landmark[name]" id="landmark_name">
+  <label for="landmark_year_completed">Landmark Year Completed:</label>
+  <input type="text" name="landmark[year_completed]" id="landmark_year_completed" value="<%=@landmark.year_completed%>">
   <br>
   <p>does your Landmark have any of these titles?</p>
   <%@titles.each do |title|%>
