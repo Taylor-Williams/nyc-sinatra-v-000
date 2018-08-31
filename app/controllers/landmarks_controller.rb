@@ -29,8 +29,8 @@ class LandmarksController < ApplicationController
     if !params[:landmark][:year_completed].empty?
       @landmark.year_completed = params[:landmark][:year_completed]
     end
-    if params[:landmark][:landmark_ids]
-      @landmark.figure_ids = params[:landmark][:figure_ids]
+    if params[:landmark][:landmark_id]
+      @landmark.figure_id = params[:landmark][:figure_id]
     end
     if !params[:figure][:name].empty?
       figure = Figure.find_or_create_by(name: params[:figure][:name])
@@ -55,8 +55,8 @@ class LandmarksController < ApplicationController
     if !params[:landmark][:year_completed].empty?
       @landmark.year_completed = params[:landmark][:year_completed]
     end
-    if params[:landmark][:figure_ids]
-      @landmark.figure_ids = params[:landmark][:figure_ids]
+    if params[:landmark][:figure_id]
+      @landmark.figure_id = params[:landmark][:figure_id]
     end
     if !params[:figure][:name].empty?
       figure = Figure.find_or_create_by(name: params[:figure][:name])
